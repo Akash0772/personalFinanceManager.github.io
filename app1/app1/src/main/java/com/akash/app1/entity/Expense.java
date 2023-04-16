@@ -9,28 +9,28 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "income")
-public class Income {
+@Table(name = "expense")
+public class Expense {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String source;
+	private String category;
 	private double amount;
 	private LocalDate date;
 	
-//	getter and setter
+//	getter & setter
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getSource() {
-		return source;
+	public String getCategory() {
+		return category;
 	}
-	public void setSource(String source) {
-		this.source = source;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public double getAmount() {
 		return amount;
@@ -44,6 +44,5 @@ public class Income {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	
 	
 }
