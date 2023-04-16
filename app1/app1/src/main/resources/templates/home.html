@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Finance Manager</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.0/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Finance Manager</h1>
+        <h2>Add Income</h2>
+        <form th:action="@{/add-income}" th:object="${income}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Source</label>
+                <input type="text" th:field="*{source}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Amount</label>
+                <input type="number" th:field="*{amount}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" th:field="*{date}" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <hr>
+        <h2>Add Expense</h2>
+        <form th:action="@{/add-expense}" th:object="${expense}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <input type="text" th:field="*{category}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Amount</label>
+                <input type="number" th:field="*{amount}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" th:field="*{date}" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <hr>
+        <h2>View Transactions</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Source/Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="income : ${incomes}">
+                    <td th:text="${income.source}">Income</td>
+                    <td th:text="${income.amount}"></td>
+                    <td th:text="${income.date}"></td>
+                </tr>
+                <tr th:each="expense : ${expenses}">
+                    <td th:text="${expense.category}">Expense</td>
+                    <td th:text="${expense.amount}"></td>
+                    <td th:text="${expense.date}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script th:src="@{/webjars/bootstrap/5.1.0/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
