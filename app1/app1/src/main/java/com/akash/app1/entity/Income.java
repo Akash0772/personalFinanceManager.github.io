@@ -19,7 +19,7 @@ public class Income {
 	private double amount;
 	private LocalDate date;
 	
-//	getter and setter
+//	getter && setter
 	public Long getId() {
 		return id;
 	}
